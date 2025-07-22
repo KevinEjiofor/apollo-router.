@@ -1,0 +1,8 @@
+telemetry:
+  exporters:
+    tracing:
+      common:
+        service_name: router
+      datadog:
+        enabled: true
+        endpoint: default

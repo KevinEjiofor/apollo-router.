@@ -1,0 +1,30 @@
+---
+source: apollo-router/tests/integration_tests.rs
+expression: response.errors
+---
+[
+  {
+    "message": "Unknown argument \"notAnArg\" on field \"Product.name\".",
+    "locations": [
+      {
+        "line": 1,
+        "column": 22
+      }
+    ],
+    "extensions": {
+      "code": "GRAPHQL_VALIDATION_FAILED"
+    }
+  },
+  {
+    "message": "Fragment \"Unused\" is never used.",
+    "locations": [
+      {
+        "line": 1,
+        "column": 42
+      }
+    ],
+    "extensions": {
+      "code": "GRAPHQL_VALIDATION_FAILED"
+    }
+  }
+]

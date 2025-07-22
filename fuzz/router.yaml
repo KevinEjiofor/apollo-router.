@@ -1,0 +1,12 @@
+supergraph:
+  listen: 0.0.0.0:4000
+  introspection: true
+sandbox:
+  enabled: true
+homepage:
+  enabled: false
+traffic_shaping:
+  router: 
+    timeout: 300s
+include_subgraph_errors:
+  all: true

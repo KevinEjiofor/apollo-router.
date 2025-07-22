@@ -1,0 +1,14 @@
+{
+  "title": "Self-Hosted Router",
+  "algoliaFilters": ["docset:router"],
+  "sidebar": {
+    "Reference": {
+      "Migration": {
+        "From Gateway": "/reference/migration/from-gateway"
+      },
+      "Router": {
+        "Configuration": "/reference/router/configuration"
+      }
+    }
+  }
+}

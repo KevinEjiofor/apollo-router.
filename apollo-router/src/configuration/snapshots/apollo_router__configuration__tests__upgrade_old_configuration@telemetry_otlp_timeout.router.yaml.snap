@@ -1,0 +1,14 @@
+---
+source: apollo-router/src/configuration/tests.rs
+expression: new_config
+---
+---
+telemetry:
+  exporters:
+    tracing:
+      otlp:
+        endpoint: default
+        batch_processor:
+          max_export_timeout: 5s
+        enabled: true
+

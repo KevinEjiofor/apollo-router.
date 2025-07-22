@@ -1,0 +1,90 @@
+---
+source: apollo-router/src/plugins/progressive_override/tests.rs
+expression: query_plan
+---
+{
+  "data": {
+    "percent100": null
+  },
+  "errors": [
+    {
+      "message": "subgraph mock not configured",
+      "path": [],
+      "extensions": {
+        "code": "SUBGRAPH_MOCK_NOT_CONFIGURED",
+        "service": "Subgraph1"
+      }
+    }
+  ],
+  "extensions": {
+    "apolloQueryPlan": {
+      "object": {
+        "kind": "QueryPlan",
+        "node": {
+          "kind": "Sequence",
+          "nodes": [
+            {
+              "kind": "Fetch",
+              "serviceName": "Subgraph1",
+              "variableUsages": [],
+              "operation": "{ percent100 { __typename id } }",
+              "operationName": null,
+              "operationKind": "query",
+              "id": null,
+              "inputRewrites": null,
+              "outputRewrites": null,
+              "contextRewrites": null,
+              "schemaAwareHash": "5ccd469f4d6e284c89147dabcb126f77a4df3d1564022d4e656ab5259afe4d4b",
+              "authorization": {
+                "is_authenticated": false,
+                "scopes": [],
+                "policies": []
+              }
+            },
+            {
+              "kind": "Flatten",
+              "path": [
+                "percent100"
+              ],
+              "node": {
+                "kind": "Fetch",
+                "serviceName": "Subgraph2",
+                "requires": [
+                  {
+                    "kind": "InlineFragment",
+                    "typeCondition": "T",
+                    "selections": [
+                      {
+                        "kind": "Field",
+                        "name": "__typename"
+                      },
+                      {
+                        "kind": "Field",
+                        "name": "id"
+                      }
+                    ]
+                  }
+                ],
+                "variableUsages": [],
+                "operation": "query($representations: [_Any!]!) { _entities(representations: $representations) { ... on T { foo } } }",
+                "operationName": null,
+                "operationKind": "query",
+                "id": null,
+                "inputRewrites": null,
+                "outputRewrites": null,
+                "contextRewrites": null,
+                "schemaAwareHash": "06c92f85953526b52325aa2553d5a1eb10263d393ed30316da637b20bd379f7e",
+                "authorization": {
+                  "is_authenticated": false,
+                  "scopes": [],
+                  "policies": []
+                }
+              }
+            }
+          ]
+        }
+      },
+      "text": "QueryPlan {\n  Sequence {\n    Fetch(service: \"Subgraph1\") {\n      {\n        percent100 {\n          __typename\n          id\n        }\n      }\n    },\n    Flatten(path: \"percent100\") {\n      Fetch(service: \"Subgraph2\") {\n        {\n          ... on T {\n            __typename\n            id\n          }\n        } =>\n        {\n          ... on T {\n            foo\n          }\n        }\n      },\n    },\n  },\n}"
+    }
+  }
+}
